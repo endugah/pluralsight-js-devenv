@@ -1,0 +1,25 @@
+#Test against this version of Node.js environment
+environment:
+  matrix:
+  #node.js
+  - nodejs_version: "6"
+
+#install  scripts (runs aster repo cloning)
+install:
+  #Get the latest stable version of node.js or o.js
+  -ps:install-Product node $env:node.js_version
+  #install modules
+  -npm install
+
+#post-install test scripts
+test_scripts:
+  #output useful info for debugging
+  -node --version
+  -npm --version
+
+  #run tests
+  -npm test
+
+
+#dont actually build
+build:off
