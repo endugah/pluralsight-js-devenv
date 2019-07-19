@@ -20,12 +20,11 @@ test_script:
   #run tests
   - npm test
 
-  # Which reports the build as failed, but Invoke-Expression always succeeds xD
+#dont actually build
+build: off
+
+ # Which reports the build as failed, but Invoke-Expression always succeeds xD
 after_test:
   - ps: |
       $codecov_cmd = '& codecov -X gcov --name ' + $env:TEST_NAME
       Invoke-Expression $codecov_cmd
-
-
-#dont actually build
-build: off
