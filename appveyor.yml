@@ -7,18 +7,18 @@ environment:
 #install  scripts (runs aster repo cloning)
 install:
   #Get the latest stable version of node.js or o.js
-  -ps:install-Product node $env:node.js_version
+  - ps:install-Product node $env:node.js_version
   #install modules
-  -npm install
+  - npm install
 
 #post-install test scripts
 test_scripts:
   #output useful info for debugging
-  -node --version
-  -npm --version
+  - node --version
+  - npm --version
 
   #run tests
-  -npm test
+  - npm test
 
 
 #dont actually build
