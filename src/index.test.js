@@ -11,11 +11,11 @@ describe('our first test', () =>{
 });
 
 describe('index.html', () =>{
-    it('should say hello', () =>{  //place done in bracket for other tests
+    it('should have  h1 thats says Users', () =>{  //place done in bracket for other tests
         const index = fs.readFileSync('./src/index.html', 'utf-8');
         jsdom.env(index, function(err, window){
             const h1 = window.document.getElementByTagName('h1')[0];
-            expect(h1.innerHTML).to.equal("Hello World!"); //Our Assertion
+            expect(h1.innerHTML).to.equal("Users"); //Our Assertion
             //done();
             window.close();
          });
