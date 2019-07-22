@@ -1,34 +1,18 @@
 // jshint esversion:6
-import 'whatwg-fetch'; //x-browser support for browsers without native fetch support
-import getBaseUrl from './baseUrl';
+import 'whatwg-fetch';
 
-const baseUrl = getBaseUrl();
-
-export function getUsers(){
-    return get('users');
-}
-
-export function deleteUser(id) {
-    return deleteUser('user/${id}');
+export function getUsers() {
+  return get('users');
 }
 
 function get(url) {
-    return fetch(baseUrl + url).then(onSuccess, onError);
-}
-
-//Can't call func delete since its reserved word
-function del(url) {
-    const request  = new Request(baseUrl + url, {
-        method: 'DELETE'
-    });
-
-    return fetch(request).then(onSuccess, onError);
+  return fetch(url).then(onSuccess, onError);
 }
 
 function onSuccess(response) {
-    return response.json();
+  return response.json();
 }
 
 function onError(error) {
-    console.log(error); // eslint-disable-line no-console
+  console.log(error); // eslint-disable-line no-console
 }
